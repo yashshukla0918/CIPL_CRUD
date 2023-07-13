@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/CIPL_CRUD/static/css/main.e6c13ad2.css",
+    "main.js": "/CIPL_CRUD/static/js/main.3dacbf5d.js",
+    "index.html": "/CIPL_CRUD/index.html",
+    "main.e6c13ad2.css.map": "/CIPL_CRUD/static/css/main.e6c13ad2.css.map",
+    "main.3dacbf5d.js.map": "/CIPL_CRUD/static/js/main.3dacbf5d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.3dacbf5d.js"
+  ]
+}
