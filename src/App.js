@@ -14,7 +14,7 @@ const App = () => {
         <NavigationComp/>
         <Routes>
           <Route path="/CIPL_CRUD/*" element={<EntryComp/>}/>
-          <Route path="/CIPL_CRUD//user" element={<UserTable/>}/>
+          <Route path="/CIPL_CRUD/user" element={<UserTable/>}/>
         </Routes>
       </div>
     </Router>
