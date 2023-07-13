@@ -9,6 +9,9 @@ const UserTable = () => {
     const [name, setName] = useState("")
     const [age, setAge] = useState("")
     const [sex, setSex] = useState("")
+    const [alert, setAlert] = useState(false)
+    const [success,setSuccess] = useState(false)
+    const [messsage,setMessage] = useState("")
 
     useEffect(() => {
         setUsers(UserData)
@@ -20,11 +23,10 @@ const UserTable = () => {
 
         let ages = parseInt(age);
         if (ages < 18 || ages > 110) {
-            alert("Age must be in between 18 to 110")
+            setMessage("Age must be in between 18 to 110")
+            setAlert(true)
             return false
         }
-
-
         return true
     }
 
@@ -59,6 +61,8 @@ const UserTable = () => {
 
             })
             setUsers(updatedUser)
+            setMessage(`User with id : [${updateFor}] Updated Successfully`)
+            setSuccess(true)
             setUpdate(false)
         }
     }
@@ -73,12 +77,25 @@ const UserTable = () => {
             })
             setUsers(newArr)
         }
+        setMessage("User Deleted Successfully")
+        setSuccess(true)
     }
 
 
     return (
 
         <div className="row text-center my-3">
+             <center>{alert ?
+                <div className={`alert alert-danger alert-dismissible fade show w-50`} role="alert">
+                    <strong className='px-3'>Warning!</strong> {messsage}.
+                    <button type="button" className="btn-close" onClick={()=>{setAlert(false)}} aria-label="Close"></button>
+                </div>: ""}
+                {success ?
+                <div className={`alert alert-success alert-dismissible fade show w-50`} role="alert">
+                    <strong className='px-3'>Congratulations ! </strong> {messsage}.
+                    <button type="button" className="btn-close" onClick={()=>{setSuccess(false)}} aria-label="Close"></button>
+                </div>: ""}
+            </center> 
             <div className="col-sm-12 text-center ">
                 <center>
                     <table className="table  caption-top w-50">

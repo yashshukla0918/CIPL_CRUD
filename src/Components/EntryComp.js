@@ -4,13 +4,23 @@ const EntryComp = () => {
 
     const [name, setName] = useState("")
     const [age, setAge] = useState("")
-    const [sex, setSex] = useState("")
+    const [sex, setSex] = useState(null)
+    const [alert, setAlert] = useState(false)
+    const [success,setSuccess] = useState(false)
+    const [messsage,setMessage] = useState("")
 
+    const alertType =['alert-danger',"alert-success"]
 
     const validation = () => {
         let ages = parseInt(age);
-        if (ages < 18 ||  ages > 110) {  
-            alert("Age must be in between 18 to 110")
+        if (ages < 18 || ages > 110) {
+            setMessage("Age must be in between 18 to 110")
+            setAlert(true)
+            return false
+        }
+        if(sex===null){
+            setMessage("Specify the gender")
+            setAlert(true)
             return false
         }
         return true
@@ -22,7 +32,7 @@ const EntryComp = () => {
             let id = new Date().getTime().toString()
             let nameArr = name.split(" ")
             nameArr = nameArr.map(letter => {
-              return letter[0].toString().toUpperCase() + letter.substring(1)
+                return letter[0].toString().toUpperCase() + letter.substring(1)
             });
             let user = {
                 id: id,
@@ -31,7 +41,9 @@ const EntryComp = () => {
                 sex: sex
             }
             setName(nameArr.join(" "))
-            UserData.unshift(user)
+            UserData.unshift(user)            
+            setMessage("User Added Successfully")
+            setSuccess(true)
         }
     }
     return (
@@ -61,7 +73,19 @@ const EntryComp = () => {
                         </center>
                     </div>
                 </div>
+
             </div>
+             <center>{alert ?
+                <div className={`alert alert-danger alert-dismissible fade show w-50`} role="alert">
+                    <strong className='px-3'>Warning!</strong> {messsage}.
+                    <button type="button" className="btn-close" onClick={()=>{setAlert(false)}} aria-label="Close"></button>
+                </div>: ""}
+                {success ?
+                <div className={`alert alert-success alert-dismissible fade show w-50`} role="alert">
+                    <strong className='px-3'>Congratulations ! </strong> {messsage}.
+                    <button type="button" className="btn-close" onClick={()=>{setSuccess(false)}} aria-label="Close"></button>
+                </div>: ""}
+            </center> 
         </div>
     )
 }
