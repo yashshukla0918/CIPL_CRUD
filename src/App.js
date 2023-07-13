@@ -13,8 +13,8 @@ const App = () => {
       <div className="container-fluid p-0 text-center">
         <NavigationComp/>
         <Routes>
-          <Route path="/" element={<EntryComp/>}/>
-          <Route path="/user" element={<UserTable/>}/>
+          <Route path="/CIPL_CRUD/*" element={<EntryComp/>}/>
+          <Route path="/CIPL_CRUD//user" element={<UserTable/>}/>
         </Routes>
       </div>
     </Router>
